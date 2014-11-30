@@ -122,13 +122,6 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-# FM
-PRODUCT_PACKAGES += \
-    FM2 \
-    FMRecord \
-    libqcomfm_jni \
-    qcom.fmradio
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8226
@@ -147,12 +140,14 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Motorola
 PRODUCT_PACKAGES += \
-    aplogd \
     charge_only_mode
 
 # OMX
@@ -187,38 +182,22 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.coex.sh \
-    init.qcom.efs.sync.sh \
-    init.qcom.fm.sh \
-    init.qcom.mdm_links.sh \
-    init.qcom.modem_links.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.thermal_conf.sh \
-    init.qcom.wifi.sh \
-    moto_com.sh \
     mount_pds.sh
 
 PRODUCT_PACKAGES += \
     bbx \
     gpecheck.sh \
-    init.class_main.sh \
     init.mmi.boot.sh \
-    init.mmi.rc \
     init.mmi.touch.sh \
-    init.qcom.class_core.sh \
-    init.qcom.early_boot.sh \
     init.qcom.rc \
-    init.qcom.sh \
     init.qcom.ssr.sh \
-    init.qcom.syspart_fixup.sh \
     init.qcom.usb.rc \
-    init.qcom.usb.sh \
-    init.target.rc \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 # Thermal
-PRODUCT_PACKAGES += \
-    thermal-engine-8226.conf
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -230,9 +209,12 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
+    dhcpcd.conf \
     hostapd.accept \
     hostapd.deny \
-    hostapd_default.conf
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \
